@@ -1,5 +1,10 @@
+// ignore_for_file: prefer_const_constructors
+
+import 'package:clock_app/enum.dart';
+import 'package:clock_app/menu_info.dart';
 import 'package:flutter/material.dart';
-import 'homepage.dart';
+import 'package:provider/provider.dart';
+import 'views/homepage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,6 +22,9 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
-        home: const HomePage());
+        home: ChangeNotifierProvider<MenuInfo>(
+            create: (context) =>
+                MenuInfo(MenuType.clock, imageSource: '', title: ''),
+            child: HomePage()));
   }
 }
